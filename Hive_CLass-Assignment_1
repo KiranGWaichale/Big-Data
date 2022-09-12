@@ -46,3 +46,49 @@ Time taken: 26.13 seconds
 
 hive> describe formatted sales_order_csv;
 
+
+# load data from hdfs location
+
+hive> load data inpath '/tmp/hive_class/sales_order_data.csv' into table sales_order_csv;
+Loading data to table hive_class_b1.sales_order_csv
+Table hive_class_b1.sales_order_csv stats: [numFiles=1, totalSize=360233]
+OK
+Time taken: 2.609 seconds
+
+
+
+# create table sales_order_orc
+
+hive> create table sales_order_orc
+    > (
+    > ORDERNUMBER int,
+    > QUANTITYORDERED int,
+    > PRICEEACH float,
+    > ORDERLINENUMBER int,
+    > SALES float,
+    > STATUS string,
+    > QTR_ID int,
+    > MONTH_ID int,
+    > YEAR_ID int,
+    > PRODUCTLINE string,
+    > MSRP int,
+    > PRODUCTCODE string,
+    > PHONE string,
+    > CITY string,
+    > STATE string,
+    > POSTALCODE string,
+    > COUNTRY string,
+    > TERRITORY string,
+    > CONTACTLASTNAME string,
+    > CONTACTFIRSTNAME string,
+    > DEALSIZE string
+    > )
+    > stored as orc;
+OK
+Time taken: 1.944 seconds
+
+
+
+# Load data from "sales_order_csv" into "sales_order_orc"
+
+hive> from sales_order_csv insert overwrite table sales_order_orc select *;
