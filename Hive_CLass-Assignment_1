@@ -1,0 +1,41 @@
+# copy file from local to hdfs location
+
+[cloudera@quickstart ~]$ hadoop fs -mkdir /tmp/hive_class/
+[cloudera@quickstart ~]$ hadoop fs -ls /tmp/hive_class/
+[cloudera@quickstart ~]$ hadoop fs -put /tmp/hive_class/sales_order_data.csv /tmp/hive_class/
+[cloudera@quickstart ~]$ hadoop fs -ls /tmp/hive_class/
+Found 1 items
+-rw-r--r--   1 cloudera supergroup     360233 2022-09-12 09:50 /tmp/hive_class/sales_order_data.csv
+
+
+# sales_data_csv table creation
+
+hive> create table sales_order_csv
+    > (
+    > ORDERNUMBER int,
+    > QUANTITYORDERED int,
+    > PRICEEACH float,
+    > ORDERLINENUMBER int,
+    > SALES float,
+    > STATUS string,
+    > QTR_ID int,
+    > MONTH_ID int,
+    > YEAR_ID int,
+    > PRODUCTLINE string,
+    > MSRP int,
+    > PRODUCTCODE string,
+    > PHONE string,
+    > CITY string,
+    > STATE string,
+    > POSTALCODE string,
+    > COUNTRY string,
+    > TERRITORY string,
+    > CONTACTLASTNAME string,
+    > CONTACTFIRSTNAME string,
+    > DEALSIZE string
+    > )
+    > row format delimited
+    > fields terminated by ','
+    > tblproperties("skip.header.line.count"="1");
+OK
+Time taken: 26.13 seconds
