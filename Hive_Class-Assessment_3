@@ -25,7 +25,14 @@ Components of Hive
 
 
 5. Mention what Hive query processor does? And Mention what are the components of a Hive query processor?
-Ans: 
+Ans: Hive query processor does
+1. Syntax/ Semantics check
+2. Planning
+3. Execution
+4. Optimization
+
+Components - 1. Parser, 2. Planner, 3. Execution, 4. Optimization
+
 
 
 6. What are the three different modes in which we can operate Hive?
@@ -38,7 +45,7 @@ Ans :
 
 8. How to create a Database in HIVE?
 Ans: create database BigData;
-
+BigData is database name.
 
 9. How to create a table in HIVE?
 Ans: create table student (id int, name string, email string, phone int)
@@ -68,7 +75,7 @@ Ans:
 
 
 17.Where does the data of a Hive table get stored?
-Ans: Hive date is stored at hdfs warehouse location.
+Ans: Hive data is stored at hdfs warehouse location.
 
 
 18.Is it possible to change the default location of a managed table?
