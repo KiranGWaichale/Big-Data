@@ -13,7 +13,15 @@ Ans: Hive is not ment to perform CURD operations, it used for Analytic purpose. 
 
 
 4. Explain the hive architecture and the different components of a Hive architecture?
-Ans: 
+Ans: Hive is a hdfs based warehousing service used for Analytic Purpose.
+Components of Hive
+1. JDBC/ ODBC connector
+2. User Interface (CLI, Web, Thrift)
+3. Driver
+4. Metastore
+5. MapReduce
+6. HDFS
+
 
 
 5. Mention what Hive query processor does? And Mention what are the components of a Hive query processor?
