@@ -178,8 +178,32 @@ Ireland
 Time taken: 99.601 seconds, Fetched: 1 row(s)
 
 
+
 # f. Calculate quartelry sales for each 
+
+#partition over QTR_ID column
+
+hive> create table sales_order_partition
+    > (
+    > ORDERNUMBER int,
+    > QUANTITYORDERED int,
+    > SALES float,
+    > MONTH_ID int,
+    > YEAR_ID int,
+    > CITY string,
+    > STATE string,
+    > COUNTRY string
+    > )
+    > partitioned by (QTR_ID int);
+OK
+Time taken: 17.553 seconds
+
+
+hive> insert overwrite table sales_order_partition partition(QTR_ID) select ORDERNUMBER, QUANTITYORDERED, SALES, MONTH_ID, YEAR_ID, CITY, STATE, COUNTRY, QTR_ID from sales_order_orc;
+
+
 # f.1 -> Year & Quarter
+
 hive> select CITY,YEAR_ID,QTR_ID,sum(SALES) as Total_sales from sales_order_orc group by CITY,YEAR_ID,QTR_ID;
 city    year_id qtr_id  total_sales
 Aaarhus 2003    4       40321.60998535156
